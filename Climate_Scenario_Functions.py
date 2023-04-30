@@ -122,13 +122,13 @@ def pv_generation(daily_irrad_scenario, daily_t_avg, N):
 def solar_irrad_hourly_coeff(month, solar_irrad_hourly):
     solar_irrad_hourly = pd.DataFrame(solar_irrad_hourly)
     solar_irrad_hourly['time'] = pd.to_datetime(solar_irrad_hourly['time'])
-    september_solar_irrad_hourly = solar_irrad_hourly[solar_irrad_hourly['time'].dt.month == month]
-    september_solar_irrad_hourly.loc[:, 'day'] = september_solar_irrad_hourly['time'].dt.date
-    sum_gi = september_solar_irrad_hourly.groupby('day')['G(i)'].transform('sum')
-    september_solar_irrad_hourly.loc[:, 'norm_gi'] = september_solar_irrad_hourly['G(i)'] / sum_gi
-    september_solar_irrad_hourly = september_solar_irrad_hourly.sort_values(by='time')
-    september_solar_irrad_hourly = september_solar_irrad_hourly.reset_index(drop=True)
-    return september_solar_irrad_hourly
+    monthly_solar_irrad_hourly = solar_irrad_hourly[solar_irrad_hourly['time'].dt.month == month].copy()
+    monthly_solar_irrad_hourly.loc[:, 'day'] = monthly_solar_irrad_hourly['time'].dt.date
+    sum_gi = monthly_solar_irrad_hourly.groupby('day')['G(i)'].transform('sum')
+    monthly_solar_irrad_hourly.loc[:, 'norm_gi'] = monthly_solar_irrad_hourly['G(i)'] / sum_gi
+    monthly_solar_irrad_hourly = monthly_solar_irrad_hourly.sort_values(by='time')
+    monthly_solar_irrad_hourly = monthly_solar_irrad_hourly.reset_index(drop=True)
+    return monthly_solar_irrad_hourly
 
 # Converting daily PV power output to hourly
 def daily_to_hourly_pv_generation(daily_pv_generation, solar_irrad_hourly_coeff, N):
