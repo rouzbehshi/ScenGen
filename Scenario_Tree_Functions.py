@@ -1,23 +1,3 @@
-# N_Branch= (1/4)*(1/3)
-#
-# c1 = CNRM_45_hourly_scenario_format
-# c2 = CNRM_85_hourly_scenario_format
-# c3 = MIROC_45_hourly_scenario_format
-# c4 = MIROC_85_hourly_scenario_format
-#
-# d1 = SDGE_High_Low_scenario_format
-# d2 = SDGE_Mid_Mid_scenario_format
-# d3 = SDGE_Low_High_scenario_format
-#
-# Pc1 = CNRM_45_daily_irrad_prob_norm
-# Pc2 = CNRM_85_daily_irrad_prob_norm
-# Pc3 = MIROC_45_daily_irrad_prob_norm
-# Pc4 = MIROC_85_daily_irrad_prob_norm
-#
-# Pd1 = SDGE_High_Low_prob_norm
-# Pd2 = SDGE_Mid_Mid_prob_norm
-# Pd3 = SDGE_Low_High_prob_norm
-
 #Combining climate and demand scenario VALUES of each scenario tree BRANCH
 def combine_scenario_branch(climate, demand):
     climate_combined = {}
